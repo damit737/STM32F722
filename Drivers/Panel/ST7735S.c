@@ -79,26 +79,20 @@ static void spi_write_nbytes_Data ( uint8_t *d, uint32_t len )
 
 static void spi_write_nbytes ( uint8_t *d, uint32_t len )
 {
-//	if(len & 0x01)
-//	 while(1){}
 	uint32_t lengh = len;
 	while(lengh--)
 	{
-//		lengh -= 2;
         uint16_t data1 = *d;
         uint16_t data2 = *(d+1);
         data1 |= 0x100;
         data2 |= 0x100;
         if( pST7735S_hspi != NULL )
-                HAL_SPI_Transmit( pST7735S_hspi, (uint8_t*)&data2, 1, 100 );
-        if( pST7735S_hspi != NULL )
-                HAL_SPI_Transmit( pST7735S_hspi, (uint8_t*)&data1, 1, 100 );
+        {
+            HAL_SPI_Transmit( pST7735S_hspi, (uint8_t*)&data2, 1, 100 );
+            HAL_SPI_Transmit( pST7735S_hspi, (uint8_t*)&data1, 1, 100 );
+        }
         d += 2;
 	}
-
-//	if( pST7735S_hspi != NULL )
-//		HAL_SPI_Transmit( pST7735S_hspi, d, len, 100 );
-
 }
 
 static void spi_write_nbytes_IT ( uint8_t *d, uint32_t len )
@@ -342,7 +336,7 @@ bool ST7735S_init ( SPI_HandleTypeDef *hspi,
 	spi_set_prescaler( SPI_BAUDRATEPRESCALER_8 ); // 108M / 8 = 13.5MBits/s
 //while(1)
 //{
-//	clear_full_screen( 0x00 );
+//	clear_full_screen( 0xF800 );
 //	HAL_Delay( 120 );
 //}
 	clear_full_screen( 0x00 );
@@ -419,8 +413,6 @@ void ST7735S_set_display_window ( uint16_t sx, uint16_t sy, uint16_t ex, uint16_
  *****************************************************/
 void clear_full_screen ( uint16_t color )
 {
-//	uint32_t getSystemTick,getSystemTick1,getSystemTickInterval;
-//	getSystemTick = HAL_GetTick();
 	/*****************************************************/
 	ST7735S_set_display_window( 0, 0, (ResolutionWidth - 1), (ResolutionHeight - 1) );
 	
@@ -436,8 +428,6 @@ void clear_full_screen ( uint16_t color )
 		spi_write_nbytes( (uint8_t*)&color, 1 ); // 128 * 160 = 20480
 	}	
     CS_SetHigh( );
-//    getSystemTick1 = HAL_GetTick();
-//    getSystemTickInterval = getSystemTick1 - getSystemTick;
 	/*****************************************************/
 	// SET spi data bus width as 8-bits
 //	spi_change_data_size( 9 );
@@ -449,6 +439,7 @@ void clear_full_screen ( uint16_t color )
  *****************************************************/
 void paint_full_screen ( uint8_t *addr )
 {	
+
 	/*****************************************************/
 	ST7735S_set_display_window( 0, 0, (ResolutionWidth - 1), (ResolutionHeight - 1) );
 	
@@ -462,7 +453,6 @@ void paint_full_screen ( uint8_t *addr )
     spi_write_nbytes_IT( addr, ResolutionWidth * ResolutionHeight );
 	//spi_write_nbytes( addr, ResolutionWidth * ResolutionHeight );
     CS_SetHigh( );
-	
 	/*****************************************************/
 	// SET spi data bus width as 8-bits
 //	spi_change_data_size( 9 );
@@ -470,6 +460,9 @@ void paint_full_screen ( uint8_t *addr )
 
 void paint_section_screen ( uint8_t *d, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t size )
 {
+	uint32_t getSystemTick,getSystemTick1,getSystemTickInterval;
+	getSystemTick = HAL_GetTick();
+
 	/*****************************************************/
 	ST7735S_set_display_window( x, y, (x + w - 1), (y + h - 1) );
 	/*****************************************************/
@@ -482,13 +475,15 @@ void paint_section_screen ( uint8_t *d, uint16_t x, uint16_t y, uint16_t w, uint
     //spi_write_nbytes_IT( d, size );
 	spi_write_nbytes( d, size );
     CS_SetHigh( );
-	
+
+    getSystemTick1 = HAL_GetTick();
+    getSystemTickInterval = getSystemTick1 - getSystemTick;
 	/*****************************************************/
 	// SET spi data bus width as 8-bits
 //	spi_change_data_size( 9 );
 
 	clearTransmitActive();
-	DisplayDriver_TransferCompleteCallback();
+//	DisplayDriver_TransferCompleteCallback();
 }
 
 void setTransmitActive ( void )
