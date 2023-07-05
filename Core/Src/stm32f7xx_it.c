@@ -27,7 +27,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+uint8_t pucByte;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -217,7 +217,7 @@ void UART5_IRQHandler(void)
   /* USER CODE END UART5_IRQn 0 */
   HAL_UART_IRQHandler(&huart5);
   /* USER CODE BEGIN UART5_IRQn 1 */
-
+  HAL_UART_Receive_IT( &huart5, &pucByte, 1 );
   /* USER CODE END UART5_IRQn 1 */
 }
 
@@ -250,6 +250,10 @@ void TIM7_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
+{
+	HAL_UART_Transmit(&huart5, &pucByte, 1, 100);
+	HAL_UART_Receive_IT(&huart5, &pucByte, 1);
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

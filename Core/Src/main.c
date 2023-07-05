@@ -31,7 +31,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+extern uint8_t pucByte;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -159,7 +159,7 @@ int main(void)
   MX_TIM1_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_UART_Receive_IT(&huart5, &pucByte, 1);
   /* Output a message on Hyperterminal using printf function */
   printf("UART Printf Example: retarget the C library printf function to the UART\n\r");
   printf("** Test finished successfully. ** \n\r");
@@ -564,7 +564,7 @@ static void MX_UART5_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN UART5_Init 2 */
-
+  __HAL_UART_ENABLE_IT( &huart5, UART_IT_RXNE );
   /* USER CODE END UART5_Init 2 */
 
 }
@@ -700,10 +700,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-//	Uart_Rx_Callback( huart );
-}
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 {
