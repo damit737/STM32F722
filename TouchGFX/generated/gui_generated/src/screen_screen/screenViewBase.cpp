@@ -17,11 +17,11 @@ screenViewBase::screenViewBase()
 
     animation.setXY(0, 0);
     animation.setBitmaps(BITMAP_HEPA_1_ID, BITMAP_HEPA_5_ID);
-    animation.setUpdateTicksInterval(6);
+    animation.setUpdateTicksInterval(60);
     animation.startAnimation(false, true, true);
 
     mcuLoadValueText.setXY(99, 57);
-    mcuLoadValueText.setColor(touchgfx::Color::getColorFrom24BitRGB(239, 239, 6));
+    mcuLoadValueText.setColor(touchgfx::Color::getColorFrom24BitRGB(159, 6, 239));
     mcuLoadValueText.setLinespacing(0);
     Unicode::snprintf(mcuLoadValueTextBuffer, MCULOADVALUETEXT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID2).getText());
     mcuLoadValueText.setWildcard(mcuLoadValueTextBuffer);

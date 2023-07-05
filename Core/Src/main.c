@@ -710,7 +710,7 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 	if( hspi->Instance == SPI1 )
 	{
 		clearTransmitActive( );
-		DisplayDriver_TransferCompleteCallback();
+//		DisplayDriver_TransferCompleteCallback();
 	}
 }
 

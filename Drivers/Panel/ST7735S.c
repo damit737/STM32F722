@@ -460,8 +460,8 @@ void paint_full_screen ( uint8_t *addr )
 
 void paint_section_screen ( uint8_t *d, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t size )
 {
-	uint32_t getSystemTick,getSystemTick1,getSystemTickInterval;
-	getSystemTick = HAL_GetTick();
+//	uint32_t getSystemTick,getSystemTick1,getSystemTickInterval;
+//	getSystemTick = HAL_GetTick();
 
 	/*****************************************************/
 	ST7735S_set_display_window( x, y, (x + w - 1), (y + h - 1) );
@@ -472,12 +472,12 @@ void paint_section_screen ( uint8_t *d, uint16_t x, uint16_t y, uint16_t w, uint
 	/*****************************************************/
 	CS_SetLow( );
 //    RS_SetHigh( );
-    //spi_write_nbytes_IT( d, size );
-	spi_write_nbytes( d, size );
+    spi_write_nbytes_IT( d, size );
+//	spi_write_nbytes( d, size );
     CS_SetHigh( );
 
-    getSystemTick1 = HAL_GetTick();
-    getSystemTickInterval = getSystemTick1 - getSystemTick;
+//    getSystemTick1 = HAL_GetTick();
+//    getSystemTickInterval = getSystemTick1 - getSystemTick;
 	/*****************************************************/
 	// SET spi data bus width as 8-bits
 //	spi_change_data_size( 9 );

@@ -23,7 +23,7 @@
             "Type": "AnimatedImage",
             "FileNameFirst": "HEPA_1.png",
             "FileNameLast": "HEPA_5.png",
-            "UpdateTicksInterval": 100,
+            "UpdateTicksInterval": 1000,
             "Alpha": 255,
             "StartOnLoad": true,
             "ReverseEnabled": false,
@@ -46,9 +46,9 @@
             "TextId": "SingleUseId1",
             "TextRotation": "0",
             "Color": {
-              "Red": 239,
-              "Green": 239,
-              "Blue": 6
+              "Red": 159,
+              "Green": 6,
+              "Blue": 239
             },
             "Alpha": 255,
             "AutoSize": true,
