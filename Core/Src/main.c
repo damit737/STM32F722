@@ -159,7 +159,11 @@ int main(void)
   MX_TIM1_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+  uint8_t test = 6;
   HAL_UART_Receive_IT(&huart5, &pucByte, 1);
+	HAL_GPIO_WritePin( GPIOC, GPIO_PIN_8, GPIO_PIN_SET );
+	HAL_UART_Transmit(&huart5, &test, 1, 100);
+	HAL_GPIO_WritePin( GPIOC, GPIO_PIN_8, GPIO_PIN_RESET );
   /* Output a message on Hyperterminal using printf function */
   printf("UART Printf Example: retarget the C library printf function to the UART\n\r");
   printf("** Test finished successfully. ** \n\r");
@@ -564,7 +568,8 @@ static void MX_UART5_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN UART5_Init 2 */
-  __HAL_UART_ENABLE_IT( &huart5, UART_IT_RXNE );
+//  __HAL_UART_ENABLE_IT( &huart5, UART_IT_RXNE );
+  HAL_UART_Abort(&huart5);
   /* USER CODE END UART5_Init 2 */
 
 }
@@ -621,7 +626,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, RWR_Pin|ERD_Pin|HPMb_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, SW8_Pin|ERD_Pin|HPMb_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(CTRL_Char_GPIO_Port, CTRL_Char_Pin, GPIO_PIN_RESET);
@@ -635,14 +640,14 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(DCX_GPIO_Port, DCX_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : KEY_RIGHT_Pin BLE_DIO12_Pin BLE_DIO13_Pin KEY_DOWN_Pin */
-  GPIO_InitStruct.Pin = KEY_RIGHT_Pin|BLE_DIO12_Pin|BLE_DIO13_Pin|KEY_DOWN_Pin;
+  /*Configure GPIO pins : SW5_Pin SW6_Pin SW7_Pin SW3_Pin */
+  GPIO_InitStruct.Pin = SW5_Pin|SW6_Pin|SW7_Pin|SW3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RWR_Pin ERD_Pin HPMb_Pin */
-  GPIO_InitStruct.Pin = RWR_Pin|ERD_Pin|HPMb_Pin;
+  /*Configure GPIO pins : SW8_Pin ERD_Pin HPMb_Pin */
+  GPIO_InitStruct.Pin = SW8_Pin|ERD_Pin|HPMb_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -685,8 +690,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Th_out_Pin KEY_LEFT_Pin KEY_UP_Pin KEY_ENTER_Pin */
-  GPIO_InitStruct.Pin = Th_out_Pin|KEY_LEFT_Pin|KEY_UP_Pin|KEY_ENTER_Pin;
+  /*Configure GPIO pins : Th_out_Pin SW4_Pin SW2_Pin SW1_Pin */
+  GPIO_InitStruct.Pin = Th_out_Pin|SW4_Pin|SW2_Pin|SW1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

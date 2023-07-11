@@ -60,14 +60,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define KEY_RIGHT_Pin GPIO_PIN_13
-#define KEY_RIGHT_GPIO_Port GPIOC
-#define BLE_DIO12_Pin GPIO_PIN_0
-#define BLE_DIO12_GPIO_Port GPIOC
-#define BLE_DIO13_Pin GPIO_PIN_1
-#define BLE_DIO13_GPIO_Port GPIOC
-#define RWR_Pin GPIO_PIN_2
-#define RWR_GPIO_Port GPIOC
+#define SW5_Pin GPIO_PIN_13
+#define SW5_GPIO_Port GPIOC
+#define SW6_Pin GPIO_PIN_0
+#define SW6_GPIO_Port GPIOC
+#define SW7_Pin GPIO_PIN_1
+#define SW7_GPIO_Port GPIOC
+#define SW8_Pin GPIO_PIN_2
+#define SW8_GPIO_Port GPIOC
 #define ERD_Pin GPIO_PIN_3
 #define ERD_GPIO_Port GPIOC
 #define CTRL_Char_Pin GPIO_PIN_3
@@ -82,16 +82,16 @@ void Error_Handler(void);
 #define DCX_GPIO_Port GPIOB
 #define Th_out_Pin GPIO_PIN_11
 #define Th_out_GPIO_Port GPIOB
-#define KEY_LEFT_Pin GPIO_PIN_12
-#define KEY_LEFT_GPIO_Port GPIOB
-#define KEY_UP_Pin GPIO_PIN_13
-#define KEY_UP_GPIO_Port GPIOB
+#define SW4_Pin GPIO_PIN_12
+#define SW4_GPIO_Port GPIOB
+#define SW2_Pin GPIO_PIN_13
+#define SW2_GPIO_Port GPIOB
 #define PWM1_Pin GPIO_PIN_8
 #define PWM1_GPIO_Port GPIOA
-#define KEY_DOWN_Pin GPIO_PIN_11
-#define KEY_DOWN_GPIO_Port GPIOC
-#define KEY_ENTER_Pin GPIO_PIN_5
-#define KEY_ENTER_GPIO_Port GPIOB
+#define SW3_Pin GPIO_PIN_11
+#define SW3_GPIO_Port GPIOC
+#define SW1_Pin GPIO_PIN_5
+#define SW1_GPIO_Port GPIOB
 #define PANEL_RST_Pin GPIO_PIN_9
 #define PANEL_RST_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
