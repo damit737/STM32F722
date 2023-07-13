@@ -16,3 +16,8 @@ void screenPresenter::deactivate()
 {
 
 }
+
+void screenPresenter::ButtonNotifyEvent ( ButtonState_t ButtonStatus )
+{
+	view.ButtonNotifyEvent( ButtonStatus );
+}

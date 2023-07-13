@@ -15,10 +15,10 @@ screenViewBase::screenViewBase()
     image_background.setXY(0, 0);
     image_background.setBitmap(touchgfx::Bitmap(BITMAP_U_ID));
 
-    animation.setXY(0, 0);
-    animation.setBitmaps(BITMAP_HEPA_1_ID, BITMAP_HEPA_5_ID);
-    animation.setUpdateTicksInterval(60);
-    animation.startAnimation(false, true, true);
+    animatedImage1.setXY(0, 0);
+    animatedImage1.setBitmaps(BITMAP_HEPA_1_ID, BITMAP_HEPA_5_ID);
+    animatedImage1.setUpdateTicksInterval(60);
+    animatedImage1.startAnimation(false, true, true);
 
     mcuLoadValueText.setXY(99, 57);
     mcuLoadValueText.setColor(touchgfx::Color::getColorFrom24BitRGB(159, 6, 239));
@@ -30,7 +30,7 @@ screenViewBase::screenViewBase()
 
     add(__background);
     add(image_background);
-    add(animation);
+    add(animatedImage1);
     add(mcuLoadValueText);
 }
 

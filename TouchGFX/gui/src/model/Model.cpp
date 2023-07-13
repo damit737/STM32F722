@@ -42,14 +42,46 @@ void Model::SystemProcess ( void )
 	uint8_t number = 5;
 	uint8_t TEST[20] = "SENT SUCCESS\n";
 	uint8_t counter;
+	static ButtonState_t ButtonStatus;
 	for( counter = 0 ; counter <= number ; counter++ )
 	{
 		if( HAL_GPIO_ReadPin( ButtonState[counter].Port, ButtonState[counter].Pin ) == GPIO_PIN_SET )
 		{
-//			HAL_GPIO_WritePin( GPIOC, GPIO_PIN_8, GPIO_PIN_SET );
-			HAL_UART_Transmit(&huart5, &TEST[0], 14, 100);
-//			HAL_GPIO_WritePin( GPIOC, GPIO_PIN_8, GPIO_PIN_RESET );
-//			HAL_Delay( 200 );
+//			HAL_UART_Transmit(&huart5, &TEST[0], 14, 100);
+			memset(&ButtonStatus, 0, sizeof(ButtonStatus));
+			if(counter == 0)
+			{
+				ButtonStatus.buttonValue |= 1;
+			}
+			else if(counter == 1)
+			{
+				ButtonStatus.buttonValue |= 2;
+			}
+			else if(counter == 2)
+			{
+				ButtonStatus.buttonValue |= 4;
+			}
+			else if(counter == 3)
+			{
+				ButtonStatus.buttonValue |= 8;
+			}
+			else if(counter == 4)
+			{
+				ButtonStatus.buttonValue |= 16;
+			}
+			else if(counter == 5)
+			{
+				ButtonStatus.buttonValue |= 32;
+			}
+			else if(counter == 6)
+			{
+				ButtonStatus.buttonValue |= 64;
+			}
+			else if(counter == 7)
+			{
+				ButtonStatus.buttonValue |= 128;
+			}
+			modelListener->ButtonNotifyEvent(ButtonStatus);
 		}
 	}
 }

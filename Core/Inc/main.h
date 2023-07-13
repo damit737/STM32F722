@@ -47,6 +47,9 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
+typedef struct{
+	uint8_t buttonValue;
+}ButtonState_t;
 
 /* USER CODE END EM */
 

@@ -13,6 +13,7 @@ public:
     virtual void tearDownScreen();
     virtual void handleTickEvent ();
     void updateFPSAndMCU();
+    virtual void ButtonNotifyEvent ( ButtonState_t ButtonStatus );
 protected:
     uint8_t mcuLoadPct = 0 ;
     uint16_t frameSkippedCounter = 0;

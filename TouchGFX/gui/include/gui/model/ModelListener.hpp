@@ -14,6 +14,7 @@ public:
     {
         model = m;
     }
+    virtual void ButtonNotifyEvent ( ButtonState_t ButtonStatus ) {}
 protected:
     Model* model;
 };

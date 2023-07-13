@@ -27,6 +27,7 @@ public:
 
     virtual ~screenPresenter() {};
 
+    virtual void ButtonNotifyEvent ( ButtonState_t ButtonStatus );
 private:
     screenPresenter();
 

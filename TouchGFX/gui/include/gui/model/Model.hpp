@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include "stm32f7xx_hal.h"
-
+#include "main.h"
 class ModelListener;
 
 class Model

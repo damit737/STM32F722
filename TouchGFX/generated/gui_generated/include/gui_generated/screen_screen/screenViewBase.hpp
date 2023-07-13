@@ -29,7 +29,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Image image_background;
-    touchgfx::AnimatedImage animation;
+    touchgfx::AnimatedImage animatedImage1;
     touchgfx::TextAreaWithOneWildcard mcuLoadValueText;
 
     /*
