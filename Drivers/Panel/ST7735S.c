@@ -462,28 +462,30 @@ void paint_section_screen ( uint8_t *d, uint16_t x, uint16_t y, uint16_t w, uint
 {
 //	uint32_t getSystemTick,getSystemTick1,getSystemTickInterval;
 //	getSystemTick = HAL_GetTick();
-
+	uint16_t* ptr ;
 	/*****************************************************/
 	ST7735S_set_display_window( x, y, (x + w - 1), (y + h - 1) );
 	/*****************************************************/
-	// SET spi data bus width as 16-bits
-//	spi_change_data_size( 16 );
-	
-	/*****************************************************/
 	CS_SetLow( );
 //    RS_SetHigh( );
-    spi_write_nbytes_IT( d, size );
+	if(w == ResolutionWidth)
+	{
+		ptr = (uint16_t*)d + y * ResolutionWidth;
+	    spi_write_nbytes_IT( (uint8_t*)ptr, size );
+	}
+	else
+	{
+		for (uint32_t height = 0; height < h ; height++)
+		{
+			ptr = (uint16_t*)d + x + (height + y) * ResolutionWidth;
+			spi_write_nbytes_IT( (uint8_t*)ptr, w );
+		}
+	}
 //	spi_write_nbytes( d, size );
     CS_SetHigh( );
 
-//    getSystemTick1 = HAL_GetTick();
-//    getSystemTickInterval = getSystemTick1 - getSystemTick;
 	/*****************************************************/
-	// SET spi data bus width as 8-bits
-//	spi_change_data_size( 9 );
-
 	clearTransmitActive();
-//	DisplayDriver_TransferCompleteCallback();
 }
 
 void setTransmitActive ( void )

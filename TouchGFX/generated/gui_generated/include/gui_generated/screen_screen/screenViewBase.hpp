@@ -9,7 +9,6 @@
 #include <gui/screen_screen/screenPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/widgets/AnimatedImage.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class screenViewBase : public touchgfx::View<screenPresenter>
@@ -29,7 +28,6 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Image image_background;
-    touchgfx::AnimatedImage animatedImage1;
     touchgfx::TextAreaWithOneWildcard mcuLoadValueText;
 
     /*

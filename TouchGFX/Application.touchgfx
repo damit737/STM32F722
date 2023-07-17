@@ -5,31 +5,9 @@
         "Components": [
           {
             "Type": "Image",
-            "RelativeFilename": "U.png",
+            "RelativeFilename": "HEPA_1.png",
             "Alpha": 255,
             "Name": "image_background",
-            "X": 0,
-            "Y": 0,
-            "Width": 160,
-            "Height": 128,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "AnimatedImage",
-            "FileNameFirst": "HEPA_1.png",
-            "FileNameLast": "HEPA_5.png",
-            "UpdateTicksInterval": 1000,
-            "Alpha": 255,
-            "StartOnLoad": true,
-            "ReverseEnabled": false,
-            "LoopEnabled": true,
-            "AnimationEndedCallback": false,
-            "Name": "animatedImage1",
             "X": 0,
             "Y": 0,
             "Width": 160,
@@ -46,9 +24,9 @@
             "TextId": "SingleUseId1",
             "TextRotation": "0",
             "Color": {
-              "Red": 159,
-              "Green": 6,
-              "Blue": 239
+              "Red": 0,
+              "Green": 255,
+              "Blue": 0
             },
             "Alpha": 255,
             "AutoSize": true,
