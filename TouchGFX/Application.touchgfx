@@ -5,7 +5,7 @@
         "Components": [
           {
             "Type": "Image",
-            "RelativeFilename": "HEPA_1.png",
+            "RelativeFilename": "U.png",
             "Alpha": 255,
             "Name": "image_background",
             "X": 0,
@@ -24,9 +24,9 @@
             "TextId": "SingleUseId1",
             "TextRotation": "0",
             "Color": {
-              "Red": 0,
+              "Red": 255,
               "Green": 255,
-              "Blue": 0
+              "Blue": 255
             },
             "Alpha": 255,
             "AutoSize": true,
@@ -37,9 +37,9 @@
               "BufferSize": 15
             },
             "Name": "mcuLoadValueText",
-            "X": 99,
-            "Y": 57,
-            "Width": 38,
+            "X": 41,
+            "Y": 52,
+            "Width": 78,
             "Height": 25,
             "Visible": true,
             "LockPosition": false,

@@ -46,7 +46,7 @@ void screenView::ButtonNotifyEvent ( ButtonState_t ButtonStatus )
 
 	if(ButtonStatus.buttonValue != OldButtonValue)
 	{
-		Unicode::snprintf(mcuLoadValueTextBuffer, MCULOADVALUETEXT_SIZE, "%d", ButtonStatus.buttonValue);
+		Unicode::snprintf(mcuLoadValueTextBuffer, MCULOADVALUETEXT_SIZE, "button%d", ButtonStatus.buttonValue);
 		mcuLoadValueText.invalidate();
 
 		OldButtonValue = ButtonStatus.buttonValue;

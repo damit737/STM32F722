@@ -13,10 +13,10 @@ screenViewBase::screenViewBase()
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     image_background.setXY(0, 0);
-    image_background.setBitmap(touchgfx::Bitmap(BITMAP_HEPA_1_ID));
+    image_background.setBitmap(touchgfx::Bitmap(BITMAP_U_ID));
 
-    mcuLoadValueText.setXY(99, 57);
-    mcuLoadValueText.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 255, 0));
+    mcuLoadValueText.setXY(41, 52);
+    mcuLoadValueText.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     mcuLoadValueText.setLinespacing(0);
     Unicode::snprintf(mcuLoadValueTextBuffer, MCULOADVALUETEXT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID2).getText());
     mcuLoadValueText.setWildcard(mcuLoadValueTextBuffer);

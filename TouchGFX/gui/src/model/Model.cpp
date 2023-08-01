@@ -39,8 +39,7 @@ void Model::tick()
 void Model::SystemProcess ( void )
 {
 //	uint8_t number = sizeof(ButtonState) / sizeof(ButtonState[0]);
-	uint8_t number = 5;
-	uint8_t TEST[20] = "SENT SUCCESS\n";
+	uint8_t number = 7;
 	uint8_t counter;
 	static ButtonState_t ButtonStatus;
 	for( counter = 0 ; counter <= number ; counter++ )
@@ -51,35 +50,35 @@ void Model::SystemProcess ( void )
 			memset(&ButtonStatus, 0, sizeof(ButtonStatus));
 			if(counter == 0)
 			{
-				ButtonStatus.buttonValue |= 1;
+				ButtonStatus.buttonValue = 1;
 			}
 			else if(counter == 1)
 			{
-				ButtonStatus.buttonValue |= 2;
+				ButtonStatus.buttonValue = 2;
 			}
 			else if(counter == 2)
 			{
-				ButtonStatus.buttonValue |= 4;
+				ButtonStatus.buttonValue = 3;
 			}
 			else if(counter == 3)
 			{
-				ButtonStatus.buttonValue |= 8;
+				ButtonStatus.buttonValue = 4;
 			}
 			else if(counter == 4)
 			{
-				ButtonStatus.buttonValue |= 16;
+				ButtonStatus.buttonValue = 5;
 			}
 			else if(counter == 5)
 			{
-				ButtonStatus.buttonValue |= 32;
+				ButtonStatus.buttonValue = 6;
 			}
 			else if(counter == 6)
 			{
-				ButtonStatus.buttonValue |= 64;
+				ButtonStatus.buttonValue = 7;
 			}
 			else if(counter == 7)
 			{
-				ButtonStatus.buttonValue |= 128;
+				ButtonStatus.buttonValue = 8;
 			}
 			modelListener->ButtonNotifyEvent(ButtonStatus);
 		}
